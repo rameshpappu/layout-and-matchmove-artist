@@ -62,13 +62,6 @@
         .resume-link:hover, .showreel-link:hover, .linkedin-link:hover {
             background-color: #222;
         }
-        .upload-section {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .upload-section input[type="file"] {
-            margin: 10px auto;
-        }
         footer {
             background: #35424a;
             color: #fff;
@@ -76,16 +69,11 @@
             padding: 1rem 0;
             margin-top: 2rem;
         }
-        .summary {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1rem;
-            background-color: #e8e8f9;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .summary, .portfolio, .contact {
+            display: none;
         }
-        .summary p {
-            margin: 0.5rem 0;
+        .active {
+            display: block;
         }
     </style>
 </head>
@@ -94,12 +82,13 @@
         <h1>VFX Layout & Matchmove Artist</h1>
     </header>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Contact</a>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('portfolio')">Portfolio</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
     </nav>
     <div class="container">
-        <div class="summary">
+        <!-- Home Section -->
+        <div id="home" class="summary active">
             <h2>About Me</h2>
             <p>I am a seasoned Layout and Matchmove Artist with over a decade of experience in the visual effects industry, currently leveraging my expertise at DNEG—one of the world’s premier visual effects studios. I specialize in creating realistic and immersive scenes for feature films and television, blending technical precision with artistic innovation.</p>
             <p><strong>Core Strengths:</strong></p>
@@ -111,26 +100,55 @@
             <p>Proficient in industry-leading tools such as Maya, 3DEqualizer, and Nuke, I excel at transforming creative ideas into visually stunning results. Collaboration is at the heart of my work; I thrive in dynamic team environments, working closely with artists, technicians, and supervisors to deliver high-quality outputs that captivate audiences.</p>
             <p>Driven by an unwavering passion for visual storytelling, I am committed to pushing the boundaries of visual effects to exceed expectations and inspire audiences worldwide.</p>
         </div>
-        <div class="section">
-            <h2>Resume</h2>
+
+        <!-- Portfolio Section -->
+        <div id="portfolio" class="portfolio">
+            <h2>Resume & Work Experience</h2>
+            <p><strong>Resume:</strong> You can download my latest resume below:</p>
             <a href="Ramesh_Pappu_Resume_2.pdf" class="resume-link" download>Download My Resume</a>
-            <div class="upload-section">
-                <label for="resume-upload">Upload New Resume:</label>
-                <input type="file" id="resume-upload" name="resume">
-                <button type="button">Upload</button>
-            </div>
+            <h3>Work Experience</h3>
+            <ul>
+                <li><strong>Sr. Layout TD at DNEG Chennai (2021-11 to Present)</strong><br>Worked on *Our Flag Means Death*, *Shazam 2*, *Masters of the Air*, *Nyad*, *MEG2 The Trench*, *No One Will Save You*, *The Witcher: Blood Origin*, *Dune 2*, *Godzilla X Kong The Empire*, *Furiosa: A Mad Saga*, and *Kalki 2898AD*. Led sequences for *No One Will Save You*.</li>
+                <li><strong>Freelancer - Sr. Matchmove and Rotoanimation (2019-01 to 2021-11)</strong><br>Worked as a freelance artist for both domestic and international studios.</li>
+                <li><strong>Senior Matchmove at Legend 3D Pune (2019-03 to 2019-12)</strong><br>Worked on *Gemini-man*, *Dolittle*, *IT Chapter 2*, *The Aeronauts*, and *Skyfire*.</li>
+                <li><strong>Senior Matchmove and Rotoanimation at Deluxe Entertainment India Pune (2018-11 to 2019-03)</strong><br>Worked on *Supergirl* and several other projects.</li>
+                <li><strong>Senior Matchmove and Rotoanimation at DNEG Chennai</strong><br>Worked on *Deadpool 2*, *Antman and Wasp*, *Avengers Infinity War*, *First Man*, *Mission Impossible: Fallout*, *Bohemian Rhapsody*.</li>
+                <li><strong>Matchmove and Rotoanimation at Moving Picture Company Bangalore</strong><br>Worked on *Pirates of the Caribbean: Dead Men Tell No Tales*, *Passengers*, *Alien Covenant*, *Justice League*, and more.</li>
+                <li><strong>Mid Matchmove Artist at Anibrain Pune</strong><br>Worked on *X-Men Apocalypse*, *Resident Evil: The Final Chapter*, *Dr. Strange*.</li>
+                <li><strong>Mid Matchmove Artist at Symbiosis Visakhapatnam</strong><br>Worked on *Pixels*, *Antman*, and commercials.</li>
+                <li><strong>Mid Matchmove Artist at Prana Studios Mumbai</strong><br>Worked on *Shamitabh*, *Game of Thrones S05*.</li>
+                <li><strong>Junior Matchmove Artist at Pixelloid</strong><br>Worked on regional movies.</li>
+            </ul>
         </div>
-        <div class="section">
-            <h2>Showreel</h2>
+
+        <!-- Contact Section -->
+        <div id="contact" class="contact">
+            <h2>Contact Info</h2>
+            <p>If you'd like to get in touch with me, feel free to connect via LinkedIn or check out my showreel:</p>
             <a href="https://vimeo.com/910829681" class="showreel-link" target="_blank">Watch My Showreel</a>
-        </div>
-        <div class="section">
-            <h2>LinkedIn</h2>
+            <br>
             <a href="https://www.linkedin.com/in/ramesh-pappu-846945aa/" class="linkedin-link" target="_blank">Visit My LinkedIn Profile</a>
+            <br><br>
+            <p>Email: <a href="mailto:rameshpappu87@gmail.com">rameshpappu87@gmail.com</a></p>
+            <p>Cell: +91 8897155017, +91 8247266651</p>
         </div>
     </div>
+
     <footer>
         <p>Copyright &copy; 2024 VFX Artist Portfolio</p>
     </footer>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.summary, .portfolio, .contact');
+            sections.forEach(function(sec) {
+                sec.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(section).classList.add('active');
+        }
+    </script>
 </body>
 </html>
